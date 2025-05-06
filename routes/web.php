@@ -16,6 +16,7 @@ Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'show'])->name('profile.show');
     Route::get('/profile/edit', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::put('/profile', [ProfileController::class, 'update'])->name('profile.update'); // PUT for updates
+    Route::post('/profile/images', [ProfileController::class, 'uploadImages'])->name('profile.images.upload'); 
 });
 
 Route::get('/testing', function () {

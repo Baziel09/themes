@@ -7,6 +7,8 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use App\Models\Profile;
+use Illuminate\Database\Eloquent\Relations\HasMany; 
+use App\Models\Image; 
 
 class User extends Authenticatable
 {
@@ -39,6 +41,13 @@ class User extends Authenticatable
         'password',
         'remember_token',
     ];
+
+    public function images(): HasMany // Type hint the return type
+    {
+        // Links this User model to the Image model.
+        // Assumes 'user_id' foreign key on the images table.
+        return $this->hasMany(Image::class); 
+    }
 
     /**
      * Get the attributes that should be cast.
